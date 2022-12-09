@@ -1,6 +1,8 @@
 import type { Comment } from "../../interfaces";
 import distanceToNow from "../../lib/dateRelative";
 import { useAuth0 } from "@auth0/auth0-react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrash } from "@fortawesome/free-solid-svg-icons/faTrash";
 
 type CommentListProps = {
   comments?: Comment[];
@@ -40,9 +42,8 @@ export default function CommentList({ comments, onDelete }: CommentListProps) {
                     <button
                       className="text-gray-400 hover:text-red-500"
                       onClick={() => onDelete(comment)}
-                      aria-label="Close"
                     >
-                      x
+                      <FontAwesomeIcon icon={faTrash} />
                     </button>
                   )}
                 </div>

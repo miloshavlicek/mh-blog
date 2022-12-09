@@ -20,8 +20,8 @@ export default function CommentForm({
         rows={2}
         placeholder={
           isAuthenticated
-            ? `What are your thoughts?`
-            : "Please login to leave a comment"
+            ? `Co Tě k tématu ještě napadá?`
+            : "Pro komentování se, prosím, přihlas."
         }
         onChange={(e) => setText(e.target.value)}
         value={text}
@@ -32,13 +32,13 @@ export default function CommentForm({
         {isAuthenticated ? (
           <div className="flex items-center space-x-6">
             <button className="py-2 px-4 rounded bg-blue-600 text-white disabled:opacity-40 hover:bg-blue-700">
-              Send
+              Odeslat
             </button>
             <button
               className="text-gray-500"
               onClick={() => logout({ returnTo: window.location.origin })}
             >
-              Log Out
+              Odhlásit se
             </button>
           </div>
         ) : (
@@ -47,7 +47,7 @@ export default function CommentForm({
             className="py-2 px-4 rounded bg-blue-600 text-white disabled:opacity-40 hover:bg-blue-700"
             onClick={() => loginWithPopup()}
           >
-            Log In
+            Přihlásit se
           </button>
         )}
       </div>

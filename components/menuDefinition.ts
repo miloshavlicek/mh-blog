@@ -13,7 +13,6 @@ export const menuDefinition: Menu = {
     {
       href: "/posts",
       title: "Blog",
-      hidden: true,
     },
     {
       href: "/events",
