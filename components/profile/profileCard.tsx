@@ -3,12 +3,6 @@ import { faFacebookSquare } from "@fortawesome/free-brands-svg-icons/faFacebookS
 import SocialLinkIcon from "./socialLinkIcon";
 import { faGithub } from "@fortawesome/free-brands-svg-icons/faGithub";
 
-const styles = {
-  bg: {
-    backgroundImage: "url('https://source.unsplash.com/MP0IUfwrn0A')",
-  },
-};
-
 export default function ProfileCard(props: {
   name: string;
   jobTitle?: string;
@@ -28,7 +22,9 @@ export default function ProfileCard(props: {
         <div className="p-4 md:p-12 text-center lg:text-left">
           <div
             className="block lg:hidden rounded-full shadow-xl mx-auto -mt-16 h-48 w-48 bg-cover bg-center"
-            style={styles.bg}
+            style={{
+              backgroundImage: `url('${props.profilePhoto}')`,
+            }}
           ></div>
 
           <h1 className="text-3xl font-bold pt-8 lg:pt-0">{props.name}</h1>

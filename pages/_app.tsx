@@ -3,6 +3,8 @@ import type { AppProps } from "next/app";
 import Head from "next/head";
 import { Auth0Provider } from "@auth0/auth0-react";
 import React from "react";
+import Footer from "../components/footer";
+import Header from "../components/header";
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -41,9 +43,13 @@ export default function MyApp({ Component, pageProps }: AppProps) {
           <title>Miloš Havlíček</title>
         </Head>
 
+        <Header />
+
         <main>
           <Component {...pageProps} />
         </main>
+
+        <Footer />
       </React.StrictMode>
     </Auth0Provider>
   );
