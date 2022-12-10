@@ -2,6 +2,7 @@ import { faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { faFacebookSquare } from "@fortawesome/free-brands-svg-icons/faFacebookSquare";
 import SocialLinkIcon from "./socialLinkIcon";
 import { faGithub } from "@fortawesome/free-brands-svg-icons/faGithub";
+import Image from "next/image";
 
 export default function ProfileCard(props: {
   name: string;
@@ -81,8 +82,11 @@ export default function ProfileCard(props: {
       </div>
 
       <div className="w-full lg:w-2/5">
-        <img
+        <Image
           src={props.profilePhoto}
+          alt={"Fotografie:" + props.name}
+          width={360}
+          height={480}
           className="rounded-none lg:rounded-lg shadow-2xl hidden lg:block"
         />
       </div>
