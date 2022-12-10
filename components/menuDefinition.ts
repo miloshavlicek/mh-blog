@@ -21,7 +21,6 @@ export const menuDefinition: Menu = {
     {
       href: "/books",
       title: "Tipy na knihy",
-      hidden: true,
     },
   ],
 };

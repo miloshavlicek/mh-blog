@@ -1,3 +1,13 @@
+export type Content = {
+  title?: string;
+  author?: string;
+  excerpt?: string;
+  slug?: string;
+  content?: string;
+  date?: Date;
+  [key: string]: any;
+}
+
 export type User = {
   name: string;
   picture: string;
@@ -13,12 +23,6 @@ export type Comment = {
   user: User;
 };
 
-export type Post = {
-  slug?: string;
-  title?: string;
-  author?: string;
-  date?: Date;
-  content?: string;
-  excerpt?: string;
-  [key: string]: any;
-};
+export type Post = Content;
+
+export type Book = Content;
