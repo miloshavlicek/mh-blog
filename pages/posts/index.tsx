@@ -2,7 +2,7 @@ import type { InferGetStaticPropsType } from "next";
 import Link from "next/link";
 import Container from "../../components/container";
 import distanceToNow from "../../lib/dateRelative";
-import { getAllPosts } from "../../lib/getPost";
+import { getAllPosts } from "../../lib/data/getPost";
 
 export default function NotePage({
   allPosts,

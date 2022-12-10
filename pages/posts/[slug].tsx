@@ -7,6 +7,7 @@ import distanceToNow from "../../lib/dateRelative";
 import { getAllPosts, getPostBySlug } from "../../lib/getPost";
 import markdownToHtml from "../../lib/markdownToHtml";
 import Head from "next/head";
+import CtaNewsletter from "../../components/cta/newsletter";
 
 export default function PostPage({
   post,
@@ -43,6 +44,8 @@ export default function PostPage({
               dangerouslySetInnerHTML={{ __html: post.content }}
             />
           </article>
+
+          <CtaNewsletter />
 
           <Comment />
         </div>
