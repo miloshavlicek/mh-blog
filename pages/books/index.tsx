@@ -5,8 +5,8 @@ import distanceToNow from "../../lib/dateRelative";
 import { getAllBooks } from "../../lib/getBook";
 
 export default function BooksPage({
-                                    allBooks
-                                  }: InferGetStaticPropsType<typeof getStaticProps>) {
+  allBooks,
+}: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <Container>
       {allBooks.length ? (
@@ -36,6 +36,6 @@ export async function getStaticProps() {
   const allBooks = getAllBooks(["slug", "title", "excerpt", "date"]);
 
   return {
-    props: { allBooks }
+    props: { allBooks },
   };
 }

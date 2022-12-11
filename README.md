@@ -37,12 +37,12 @@ Go to the [Upstash Console](https://console.upstash.com/) and create a new datab
    Applications**.
 2. Go to the settings page of the application
 3. Configure the following settings:
-    - **Allowed Callback URLs**: Should be set to `http://localhost:3000/` when testing locally or typically
-      to `https://myapp.com/` when deploying your application.
-    - **Allowed Logout URLs**: Should be set to `http://localhost:3000/` when testing locally or typically
-      to `https://myapp.com/` when deploying your application.
-    - **Allowed Web Origins**: Should be set to `http://localhost:3000` when testing locally or typically
-      to `https://myapp.com/` when deploying your application.
+   - **Allowed Callback URLs**: Should be set to `http://localhost:3000/` when testing locally or typically
+     to `https://myapp.com/` when deploying your application.
+   - **Allowed Logout URLs**: Should be set to `http://localhost:3000/` when testing locally or typically
+     to `https://myapp.com/` when deploying your application.
+   - **Allowed Web Origins**: Should be set to `http://localhost:3000` when testing locally or typically
+     to `https://myapp.com/` when deploying your application.
 4. Save the settings.
 
 #### Auth0 environment

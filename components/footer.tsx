@@ -7,7 +7,11 @@ export default function Footer() {
       <Container className="p-4 bg-white md:flex md:items-center md:justify-between md:p-6">
         <span className="text-sm text-gray-500 sm:text-center dark:text-gray-400">
           © 2022{" "}
-          <a href="/" aria-label="Přejít na úvodní stranu" className="hover:underline">
+          <a
+            href="/"
+            aria-label="Přejít na úvodní stranu"
+            className="hover:underline"
+          >
             Miloš Havlíček
           </a>
         </span>
@@ -18,7 +22,11 @@ export default function Footer() {
             .map((item) => {
               return (
                 <li key={item.href}>
-                  <a href={item.href} aria-label={"Přejít na " + item.title} className="mr-4 hover:underline md:mr-6 ">
+                  <a
+                    href={item.href}
+                    aria-label={"Přejít na " + item.title}
+                    className="mr-4 hover:underline md:mr-6 "
+                  >
                     {item.title}
                   </a>
                 </li>

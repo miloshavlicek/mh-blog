@@ -6,7 +6,7 @@ export type Content = {
   content?: string;
   date?: Date;
   [key: string]: any;
-}
+};
 
 export type User = {
   name: string;

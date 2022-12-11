@@ -23,5 +23,5 @@ Seděl jsem na schůzkách, na nichž jsem většinu času neměl žádnou přid
 
 A pak mi to dockvaklo! Kdy jindy začít pracovat na svých snech když než teď? Lepší čas nikdy nebude!
 
-Psaní blogu je pro mě i do jisté míry veřejným závazkem, který mě doufám bude motivovat neustále na sobě pracovat a 
+Psaní blogu je pro mě i do jisté míry veřejným závazkem, který mě doufám bude motivovat neustále na sobě pracovat a
 vidět svůj pokrok v průběhu času.

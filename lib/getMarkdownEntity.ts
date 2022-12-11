@@ -7,7 +7,11 @@ export function getEntitiesSlugs(dataDir: string): string[] {
   return fs.readdirSync(dataDir);
 }
 
-export function getEntityBySlug<T extends Content>(dataDir: string, slug: string, fields: string[] = []): T {
+export function getEntityBySlug<T extends Content>(
+  dataDir: string,
+  slug: string,
+  fields: string[] = []
+): T {
   const realSlug = slug.replace(/\.md$/, "");
   const fullPath = join(dataDir, `${realSlug}.md`);
   const fileContents = fs.readFileSync(fullPath, "utf8");
@@ -29,9 +33,14 @@ export function getEntityBySlug<T extends Content>(dataDir: string, slug: string
   return item as T;
 }
 
-export function getAllEntities<T extends Content>(dataDir: string, fields: string[] = []): T[] {
-  return getEntitiesSlugs(dataDir)
-    .map((slug) => getEntityBySlug<T>(dataDir, slug, fields))
-    // sort posts by date in descending order
-    .sort((post1, post2) => (post1.date > post2.date ? -1 : 1));
+export function getAllEntities<T extends Content>(
+  dataDir: string,
+  fields: string[] = []
+): T[] {
+  return (
+    getEntitiesSlugs(dataDir)
+      .map((slug) => getEntityBySlug<T>(dataDir, slug, fields))
+      // sort posts by date in descending order
+      .sort((post1, post2) => (post1.date > post2.date ? -1 : 1))
+  );
 }
