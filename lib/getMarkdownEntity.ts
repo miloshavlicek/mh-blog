@@ -17,7 +17,7 @@ export function getEntityBySlug<T extends Content>(
   const fileContents = fs.readFileSync(fullPath, "utf8");
   const { data, content } = matter(fileContents);
 
-  const item: Partial<T> = {} as Partial<T>;
+  const item = {};
 
   // Ensure only the minimal needed data is exposed
   fields.forEach((field) => {
