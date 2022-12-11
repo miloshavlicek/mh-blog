@@ -4,7 +4,11 @@ import matter from "gray-matter";
 import { Content } from "../interfaces";
 
 export function getEntitiesSlugs(dataDir: string): string[] {
-  return fs.readdirSync(dataDir);
+  try {
+    return fs.readdirSync(dataDir);
+  } catch (e) {
+    return [];
+  }
 }
 
 export function getEntityBySlug<T extends Content>(
