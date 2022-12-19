@@ -1,12 +1,11 @@
 ---
 title: "Proč psát svůj příběh?"
-excerpt: "Rád bych vás tímto příspěvkem přivítal na své nové osobní stránce a zároveň představil základní důvody, které mě k
-jejímu vytvoření vedly."
+excerpt: "Rád bych vás přivítal na nové stránce klubu osobnostního rozvoje a zároveň představil základní důvody, které mě vedly k tomu, abych začal více publikovat inspirativní příběhy a poznatky ze svého života."
 date: "2022-12-09"
-author: "milos-havlicek"
+author: "milos"
 ---
 
-Značnou dávkou inspirace a zároveň motivace pro založení blogu mi byla **čajová setkání**, která v Praze pořádám od srpna letošního roku.
+Značnou dávkou inspirace a zároveň motivace pro založení stránky obsahující blog mi byla **čajová setkání**, která v Praze pořádám od srpna letošního roku.
 Během setkání se věnujeme různorodým tématům souvisejícím s osobnostním rozvojem. Každé setkání přináší kromě samotných témat
 příběhy, jimiž si každý z účastníků aktuálně v životě prochází nebo v minulosti prošel.
 

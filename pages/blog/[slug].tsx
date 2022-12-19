@@ -31,7 +31,9 @@ export default function PostPage({
 
   let article = (
     <>
-      {content}
+      {post.youTubeVideo && <YouTubeVideo slug={post.youTubeVideo} />}
+
+      <div className="mt-4">{content}</div>
 
       <Comment />
     </>
@@ -68,8 +70,6 @@ export default function PostPage({
                   </time>
                 )}
               </header>
-
-              {post.youTubeVideo && <YouTubeVideo slug={post.youTubeVideo} />}
 
               {article}
             </article>

@@ -25,17 +25,16 @@ export default function ContactPage(): ReactElement {
           <p className="lead mb-4">
             💭 S ostatními sdílíme zajímavé výukové materiály, videa a
             inspirativní myšlenky obecně, dělíme se o zajímavé postřehy z knih,
-            které právě čtete nebo si připravit třeba přednášku nebo tématické
-            setkání pro ostatní.
+            které právě čteme a každý máme možnost si připravit přednášku nebo
+            tématické setkání pro ostatní.
           </p>
 
           <p className="lead mb-4">
             Snažme se do fungování skupinky dát alespoň tolik, kolik si z ní
-            vezmeme. Jen tak se může klub dále rozvíjet a poskytovat nám
-            hodnotu. Nebojte se být proaktivní a dělejte, co považujete za
-            správné. Společně udržujeme v klubu pozitivní atmosféru a hledáme
-            především témata, která nás spojují, než ta která nás rozdělují
-            (např. politika).
+            vezmeme. Jen tak se může klub dále rozvíjet. Nebojte se být
+            proaktivní a dělejte, co považujete za správné. Společně udržujeme v
+            klubu pozitivní atmosféru a hledáme především témata, která nás
+            spojují, než ta která nás rozdělují (např. politika).
           </p>
         </div>
       </Container>

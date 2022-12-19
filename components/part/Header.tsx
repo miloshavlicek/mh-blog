@@ -6,7 +6,7 @@ import { Container } from "react-bootstrap";
 
 export default function Header(): ReactElement {
   return (
-    <header className="sticky-top p-3 text-bg-primary" style={{ zIndex: 100 }}>
+    <header className="sticky-top p-3 text-bg-primary" style={{ zIndex: 2000 }}>
       <Container>
         <nav className="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
           <Link href="/" className="text-white text-decoration-none">

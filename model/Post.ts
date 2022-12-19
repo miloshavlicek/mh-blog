@@ -13,6 +13,7 @@ export const postFields = [
   "authOnly",
   "topics",
   "youTubeVideo",
+  "content",
 ];
 
 export const postBindFields = { author: getAuthorBySlug };
