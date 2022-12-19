@@ -1,29 +1,54 @@
-import ProfileCard from "../components/profile/profileCard";
+import { ReactElement } from "react";
+import { Button, Container } from "react-bootstrap";
+import Link from "next/link";
+import BlogSection from "../components/sections/Blog";
+import Divider from "../components/part/Divider";
+import { getAllAuthors } from "../model/Author";
+import { getAllPosts } from "../model/Post";
+import { InferGetStaticPropsType } from "next";
+import { getAllTopics } from "../model/Topic";
 
-const styles = {
-  bg: {
-    backgroundImage: "url('https://source.unsplash.com/1L71sPT5XKc')",
-  },
-};
-
-function HomePage() {
+export default function HomePage({
+  authors,
+  posts,
+  topics,
+}: InferGetStaticPropsType<typeof getStaticProps>): ReactElement {
   return (
-    <div
-      className="font-sans antialiased text-gray-900 leading-normal tracking-wider bg-cover"
-      style={styles.bg}
-    >
-      <ProfileCard
-        name="Miloš Havlíček"
-        jobTitle="Technologický a startupový nadšenec s vášní pro osobní rozvoj a networking"
-        profilePhoto="/img/profile/havlicek-left.jpg"
-        description="Vývojář s chutí změnit svět prostřednictvím technologií, který si během své kariéry uvědomil, že tím nejdůležitějším, co rozhoduje o úspěchu a spokojenosti každého z nás jsou silné mezilidské vztahy a míra důvěry. Začal se tak více zaměřovat na budování vztahů, obchod a s tím související vyjednávání."
-        linkToFacebook="https://www.facebook.com/miloshavlicek"
-        linkToLinkedIn="https://www.linkedin.com/in/miloshavlicek/"
-        linkToGitHub="https://github.com/miloshavlicek"
-        location="Praha"
-      />
-    </div>
+    <>
+      <Container className="p-4">
+        <div className="px-4 py-5 my-5 text-center">
+          <h1 className="display-5 fw-bold">
+            Klub osobnostního rozvoje Žij svou vášní
+          </h1>
+
+          <p className="lead mb-4">
+            👋 Společně utváříme přátelské a inspirativní prostředí vzájemně se
+            podporujících lidí, kteří si jdou za svými cíli a sny.
+          </p>
+
+          <div>
+            <Link href="/about">
+              <Button variant="outline-primary" size="lg">
+                Dozvědět se více
+              </Button>
+            </Link>
+          </div>
+        </div>
+      </Container>
+
+      <Divider />
+
+      <BlogSection authors={authors} posts={posts} topics={topics} />
+    </>
   );
 }
 
-export default HomePage;
+export async function getStaticProps() {
+  return {
+    props: {
+      authors: getAllAuthors(),
+      posts: getAllPosts(),
+      topics: getAllTopics(),
+    },
+  };
+}

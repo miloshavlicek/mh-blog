@@ -1,19 +1,19 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import fetchComment from "../../lib/fetchComment";
-import createComments from "../../lib/createComment";
-import deleteComments from "../../lib/deleteComment";
+import fetchComment from "../../model/comment/fetchComment";
+import createComments from "../../model/comment/createComment";
+import deleteComments from "../../model/comment/deleteComments";
 
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
-) {
+): Promise<any> {
   switch (req.method) {
     case "GET":
-      return fetchComment(req, res);
+      return await fetchComment(req, res);
     case "POST":
-      return createComments(req, res);
+      return await createComments(req, res);
     case "DELETE":
-      return deleteComments(req, res);
+      return await deleteComments(req, res);
     default:
       return res.status(400).json({ message: "Invalid method." });
   }

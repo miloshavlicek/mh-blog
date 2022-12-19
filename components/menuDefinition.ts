@@ -1,17 +1,17 @@
-type MenuItem = {
+interface MenuItem {
   href: string;
   title: string;
   hidden?: boolean;
-};
+}
 
-type Menu = {
+interface Menu {
   items: MenuItem[];
-};
+}
 
 export const menuDefinition: Menu = {
   items: [
     {
-      href: "/posts",
+      href: "/blog",
       title: "Blog",
     },
     {
@@ -21,6 +21,10 @@ export const menuDefinition: Menu = {
     {
       href: "/books",
       title: "Tipy na knihy",
+    },
+    {
+      href: "/about",
+      title: "O klubu",
     },
   ],
 };

@@ -1,0 +1,37 @@
+.container {
+  max-width: 900px;
+  display: flex;
+}
+
+.profileCard {
+  padding: 1rem 0;
+}
+
+.name {
+  font-weight: bold;
+  margin: 0;
+}
+
+.profileHeading {
+  padding: 0 1rem;
+}
+
+.profileImage img {
+  border-radius: 0.5rem;
+}
+
+.line {
+  border: 0 solid #4B0082;
+  border-bottom-width: 2px;
+  width: 100%;
+  opacity: .25;
+  margin: 1em 0;
+}
+
+.jobTitle {
+  font-weight: bold;
+}
+
+.profileContent {
+  padding-top: 1rem;
+}

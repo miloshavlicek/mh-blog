@@ -1,9 +1,10 @@
-import type { Comment } from "../interfaces";
 import React, { useState } from "react";
 import useSWR from "swr";
 import { useAuth0 } from "@auth0/auth0-react";
+import { Comment } from "../model/comment/Comment";
 
-const fetcher = (url) => fetch(url).then((res) => res.json());
+const fetcher = async (url: string) =>
+  await fetch(url).then(async (res) => await res.json());
 
 export default function useComments() {
   const { getAccessTokenSilently } = useAuth0();

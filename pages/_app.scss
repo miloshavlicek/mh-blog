@@ -1,0 +1,34 @@
+$primary: #4B0082;
+
+@import "bootstrap/scss/bootstrap";
+
+.alert {
+  border: 0;
+  border-radius: 0;
+}
+
+a {
+  color: #222222;
+  text-decoration: none;
+
+  &:hover {
+    color: #000000;
+    text-decoration: underline;
+  }
+}
+
+.svg-inline--fa {
+  height: 0.85em;
+  padding-bottom: 0.15em;
+}
+
+.w-900 {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+  &, a {
+    color: $primary;
+  }
+}

@@ -1,0 +1,19 @@
+export interface User {
+  name: string;
+  picture: string;
+  sub: string;
+  email?: string;
+}
+
+export async function getUser(token: string) {
+  const response = await fetch(
+    `https://${process.env.NEXT_PUBLIC_AUTH0_DOMAIN}/userinfo`,
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+    }
+  );
+  return await response.json();
+}
