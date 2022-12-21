@@ -16,8 +16,8 @@ import { Author } from "../../model/Author";
 import { Post } from "../../model/Post";
 import { Topic } from "../../model/Topic";
 import { faHashtag } from "@fortawesome/free-solid-svg-icons/faHashtag";
-import Avatar from "../comment/Avatar";
-import TopicPill from "../comment/TopicPill";
+import Avatar from "../ui/Avatar";
+import TopicPill from "../ui/TopicPill";
 import Heading from "../part/Heading";
 
 export default function BlogSection(props: {
@@ -121,7 +121,7 @@ export default function BlogSection(props: {
                           }
                         >
                           <div className="d-inline me-2">
-                            <Link href={"/blog/authors/" + post.author.slug}>
+                            <Link href={"/blog/people/" + post.author.slug}>
                               <Avatar
                                 profilePhoto={post.author.profilePhoto}
                                 alt={"Autor " + post.author.name}

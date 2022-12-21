@@ -17,7 +17,8 @@ export function getEntityBySlug<T extends Content>(
   dataDir: string,
   slug: string,
   fields: string[] = [],
-  bindFields?: { [index: string]: (slug: string) => any }
+  bindFields: { [index: string]: (slug: string) => any } = {},
+  filter: (entity: T) => boolean = () => true
 ): T | undefined {
   const realSlug = slug.replace(/\.md$/, "");
   const fullPath = join(dataDir, `${realSlug}.md`);
@@ -44,15 +45,18 @@ export function getEntityBySlug<T extends Content>(
     }
   });
 
-  bindFields &&
-    Object.keys(bindFields).forEach((bindFieldSlug: string) => {
-      if (typeof data[bindFieldSlug] === "undefined") {
-        return;
-      }
+  Object.keys(bindFields).forEach((bindFieldSlug: string) => {
+    if (typeof data[bindFieldSlug] === "undefined") {
+      return;
+    }
 
-      const getBySlugFunction = bindFields[bindFieldSlug];
-      item[bindFieldSlug] = getBySlugFunction(data[bindFieldSlug]);
-    });
+    const getBySlugFunction = bindFields[bindFieldSlug];
+    item[bindFieldSlug] = getBySlugFunction(data[bindFieldSlug]);
+  });
+
+  if (!filter(item as T)) {
+    return;
+  }
 
   return item as T;
 }
@@ -60,7 +64,8 @@ export function getEntityBySlug<T extends Content>(
 export function getAllEntities<T extends Content>(
   dataDir: string,
   fields: string[] = [],
-  bindFields?: { [index: string]: (slug: string) => any }
+  bindFields: { [index: string]: (slug: string) => any } = {},
+  filter: (entity: T) => boolean = () => true
 ): T[] {
   return (
     getEntitiesSlugs(dataDir)
@@ -69,6 +74,7 @@ export function getAllEntities<T extends Content>(
           getEntityBySlug<T>(dataDir, slug, fields, bindFields) as T
       )
       // sort blog by date in descending order
+      .filter(filter)
       .sort((post1: T, post2: T) =>
         (post1?.date ?? 0) > (post2?.date ?? 0) ? -1 : 1
       )

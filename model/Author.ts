@@ -1,36 +1,22 @@
-import { join } from "path";
 import { getAllEntities, getEntityBySlug } from "./comment/getMarkdownEntity";
-import { WithSlug } from "./interfaces";
+import { Human, humanFields, peopleDir } from "./Human";
 
-const authorsDir = join(process.cwd(), "data/authors");
+export const authorFields = humanFields;
 
-export const authorFields = [
-  "slug",
-  "name",
-  "jobTitle",
-  "profilePhoto",
-  "description",
-  "linkToFacebook",
-  "linkToLinkedIn",
-  "linkToGitHub",
-  "location",
-];
+export type Author = Human;
 
-export type Author = {
-  name: string;
-  jobTitle: string;
-  profilePhoto: string;
-  description: string;
-  linkToFacebook: string;
-  linkToLinkedIn: string;
-  linkToGitHub: string;
-  location: string;
-} & WithSlug;
+const authorFilter = (human: Human) => human.isAuthor === true;
 
 export function getAuthorBySlug(slug: string): Author | undefined {
-  return getEntityBySlug<Author>(authorsDir, slug, authorFields);
+  return getEntityBySlug<Human>(
+    peopleDir,
+    slug,
+    authorFields,
+    {},
+    authorFilter
+  );
 }
 
 export function getAllAuthors(): Author[] {
-  return getAllEntities<Author>(authorsDir, authorFields);
+  return getAllEntities<Human>(peopleDir, authorFields, {}, authorFilter);
 }

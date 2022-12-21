@@ -1,7 +1,7 @@
 import type { InferGetStaticPropsType } from "next";
 import { useRouter } from "next/router";
 import ErrorPage from "next/error";
-import Comment from "../../components/comment/Comment";
+import Comment from "../../components/ui/Comment";
 import distanceToNow from "../../lib/utils/dateRelative";
 import { getAllPosts, getPostBySlug } from "../../model/Post";
 import markdownToHtml from "../../lib/utils/markdownToHtml";
@@ -11,7 +11,7 @@ import { ReactNode } from "react";
 import { Container, Row } from "react-bootstrap";
 import ProfileCard from "../../components/profile/ProfileCard";
 import AuthGuard from "../../components/guard/AuthGuard";
-import YouTubeVideo from "../../components/comment/YouTubeVideo";
+import YouTubeVideo from "../../components/ui/YouTubeVideo";
 
 export default function PostPage({
   post,
