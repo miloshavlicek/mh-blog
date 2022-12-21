@@ -1,21 +1,26 @@
 import styles from "./ProfileCard.module.scss";
-import { faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { faFacebookSquare } from "@fortawesome/free-brands-svg-icons/faFacebookSquare";
 import SocialLinkIcon from "./SocialLinkIcon";
 import { faGithub } from "@fortawesome/free-brands-svg-icons/faGithub";
 import Image from "next/image";
 import { ReactElement } from "react";
 import { Container } from "react-bootstrap";
+import { faUserGroup } from "@fortawesome/free-solid-svg-icons/faUserGroup";
+import { faGlobe } from "@fortawesome/free-solid-svg-icons/faGlobe";
+import { faLinkedin } from "@fortawesome/free-brands-svg-icons/faLinkedin";
 
 export default function ProfileCard(props: {
   name: string;
   jobTitle?: string;
-  description: string;
+  content: string;
   profilePhoto: string;
   location?: string;
   linkToFacebook?: string;
+  linkToFacebookGroup?: string;
   linkToLinkedIn?: string;
   linkToGitHub?: string;
+  linkToWebsite?: string;
+  roles?: string[];
 }): ReactElement {
   return (
     <Container className={styles.container}>
@@ -42,14 +47,29 @@ export default function ProfileCard(props: {
             </div>
           </div>
 
-          <div className={styles.profileContent}>
-            {props.description && <p>{props.description}</p>}
-          </div>
+          {props.roles?.map((role) => (
+            <div
+              key="role"
+              className={styles.pill + " badge rounded-pill text-bg-primary"}
+            >
+              {role}
+            </div>
+          ))}
+
+          <div className={styles.profileContent}>{props.content}</div>
 
           <div>
+            {props.linkToWebsite && (
+              <SocialLinkIcon
+                linkName="Web"
+                faIcon={faGlobe}
+                link={props.linkToWebsite}
+              />
+            )}
+
             {props.linkToLinkedIn && (
               <SocialLinkIcon
-                socialSiteName="LinkedIn"
+                linkName="LinkedIn"
                 faIcon={faLinkedin}
                 link={props.linkToLinkedIn}
               />
@@ -57,15 +77,23 @@ export default function ProfileCard(props: {
 
             {props.linkToFacebook && (
               <SocialLinkIcon
-                socialSiteName="Facebook"
+                linkName="Facebook"
                 faIcon={faFacebookSquare}
                 link={props.linkToFacebook}
               />
             )}
 
+            {props.linkToFacebookGroup && (
+              <SocialLinkIcon
+                linkName="Facebook skupina"
+                faIcon={faUserGroup}
+                link={props.linkToFacebookGroup}
+              />
+            )}
+
             {props.linkToGitHub && (
               <SocialLinkIcon
-                socialSiteName="GitHub"
+                linkName="GitHub"
                 faIcon={faGithub}
                 link={props.linkToGitHub}
               />

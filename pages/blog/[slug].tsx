@@ -9,9 +9,9 @@ import Head from "next/head";
 import CtaNewsletter from "../../components/cta/CtaNewsletter";
 import { ReactNode } from "react";
 import { Container, Row } from "react-bootstrap";
-import ProfileCard from "../../components/profile/ProfileCard";
 import AuthGuard from "../../components/guard/AuthGuard";
 import YouTubeVideo from "../../components/ui/YouTubeVideo";
+import ProfileCardHuman from "../../components/data/ProfileCardHuman";
 
 export default function PostPage({
   post,
@@ -76,18 +76,7 @@ export default function PostPage({
           </div>
 
           <div className="col-md-5 sticky-top">
-            {author && (
-              <ProfileCard
-                name={author.name}
-                jobTitle={author.jobTitle}
-                profilePhoto={author.profilePhoto}
-                description={author.description}
-                linkToFacebook={author.linkToFacebook}
-                linkToLinkedIn={author.linkToLinkedIn}
-                linkToGitHub={author.linkToGitHub}
-                location={author.location}
-              />
-            )}
+            {author && <ProfileCardHuman human={author} />}
 
             <CtaNewsletter height={420} />
           </div>

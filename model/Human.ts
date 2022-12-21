@@ -8,7 +8,7 @@ export const humanFields = [
   "name",
   "jobTitle",
   "profilePhoto",
-  "description",
+  "content",
   "linkToFacebook",
   "linkToFacebookGroup",
   "linkToLinkedIn",
@@ -17,13 +17,14 @@ export const humanFields = [
   "location",
   "isAuthor",
   "isClubMember",
+  "roles",
 ];
 
 export type Human = {
   name: string;
   jobTitle: string;
   profilePhoto: string;
-  description: string;
+  content: string;
   linkToFacebook?: string;
   linkToFacebookGroup?: string;
   linkToLinkedIn?: string;
@@ -32,4 +33,5 @@ export type Human = {
   location?: string;
   isAuthor?: boolean;
   isClubMember?: boolean;
+  roles?: string[];
 } & WithSlug;

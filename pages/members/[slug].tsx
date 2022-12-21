@@ -1,46 +1,39 @@
 import styles from "./[slug].module.scss";
 import type { InferGetStaticPropsType } from "next";
 import Link from "next/link";
-import distanceToNow from "../../../lib/utils/dateRelative";
-import {
-  Alert,
-  Card,
-  Container,
-  OverlayTrigger,
-  Row,
-  Tooltip,
-} from "react-bootstrap";
+import distanceToNow from "../../lib/utils/dateRelative";
+import { Card, Container, OverlayTrigger, Row, Tooltip } from "react-bootstrap";
 import { ReactElement } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLock } from "@fortawesome/free-solid-svg-icons/faLock";
-import { getAllAuthors, getAuthorBySlug } from "../../../model/Author";
-import { getAllPosts, Post } from "../../../model/Post";
+import { getAllPosts, Post } from "../../model/Post";
 import { useRouter } from "next/router";
 import ErrorPage from "next/error";
 import Head from "next/head";
 import { faChevronLeft } from "@fortawesome/free-solid-svg-icons/faChevronLeft";
-import Heading from "../../../components/part/Heading";
-import ProfileCardHuman from "../../../components/data/ProfileCardHuman";
+import Heading from "../../components/part/Heading";
+import { getAllClubMembers, getClubMemberBySlug } from "../../model/ClubMember";
+import ProfileCardHuman from "../../components/data/ProfileCardHuman";
 
-export default function PostsAuthorPage({
-  author,
+export default function MembersPage({
+  member,
   posts,
 }: InferGetStaticPropsType<typeof getStaticProps>): ReactElement {
   const router = useRouter();
 
-  if (!router.isFallback && !author?.slug) {
+  if (!router.isFallback && !member?.slug) {
     return <ErrorPage statusCode={404} />;
-  } else if (!author) {
+  } else if (!member) {
     return <></>;
   }
 
   return (
     <Container className="p-4 w-900">
       <Head>
-        <title>Autor {author.name} | Žij svou vášní</title>
+        <title>Člen klubu {member.name} | Žij svou vášní</title>
       </Head>
 
-      <Heading level={1}>Blog</Heading>
+      <Heading level={1}>Člen klubu</Heading>
 
       {router.isFallback ? (
         <div>Načítání…</div>
@@ -50,23 +43,22 @@ export default function PostsAuthorPage({
             <ul className="nav nav-pills flex-column mb-auto">
               <li className={styles.navItem + " nav-item"}>
                 <Link
-                  href={`/blog`}
+                  href={`/about`}
                   className={styles.navLink + " nav-link"}
                   aria-current="page"
                 >
-                  <FontAwesomeIcon icon={faChevronLeft} className="me-2" />
-                  Všechny příspěvky
+                  <FontAwesomeIcon icon={faChevronLeft} className="me-2" />O
+                  klubu
                 </Link>
               </li>
             </ul>
 
             <div className={styles.leftCol}>
-              <ProfileCardHuman human={author} />
+              <ProfileCardHuman human={member} />
             </div>
           </div>
-
           <div className="col-md-7">
-            {posts.length > 0 ? (
+            {posts.length > 0 &&
               posts.map((post: Post) => (
                 <Card key={post.slug} className="m-4">
                   <Card.Body>
@@ -103,14 +95,7 @@ export default function PostsAuthorPage({
                     </div>
                   </Card.Body>
                 </Card>
-              ))
-            ) : (
-              <div className="pt-4 pb-2 text-center">
-                <Alert variant="warning">
-                  Nejsou k dispozici žádné příspěvky.
-                </Alert>
-              </div>
-            )}
+              ))}
           </div>
         </Row>
       )}
@@ -127,7 +112,7 @@ interface Params {
 export async function getStaticProps({ params }: Params) {
   return {
     props: {
-      author: getAuthorBySlug(params.slug),
+      member: getClubMemberBySlug(params.slug),
       posts: getAllPosts().filter(
         (post: Post) => post.author?.slug === params.slug
       ),
@@ -137,7 +122,7 @@ export async function getStaticProps({ params }: Params) {
 
 export async function getStaticPaths() {
   return {
-    paths: getAllAuthors().map(({ slug }) => {
+    paths: getAllClubMembers().map(({ slug }) => {
       return {
         params: {
           slug,

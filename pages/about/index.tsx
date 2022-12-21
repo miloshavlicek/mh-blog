@@ -3,8 +3,13 @@ import { Container, Row } from "react-bootstrap";
 import Divider from "../../components/part/Divider";
 import MembershipSection from "../../components/sections/Membership";
 import Heading from "../../components/part/Heading";
+import ClubMembersAvatars from "../../components/data/ClubMembersAvatars";
+import { InferGetStaticPropsType } from "next";
+import { getAllClubMembers } from "../../model/ClubMember";
 
-export default function ContactPage(): ReactElement {
+export default function ContactPage({
+  clubMembers,
+}: InferGetStaticPropsType<typeof getStaticProps>): ReactElement {
   return (
     <>
       <Container className="p-4">
@@ -15,6 +20,8 @@ export default function ContactPage(): ReactElement {
             👋 Společně utváříme klub vzájemně se podporujících lidí, kteří si
             jdou za svými cíli a sny.
           </p>
+
+          <ClubMembersAvatars clubMembers={clubMembers} className="mb-3" />
 
           <p className="lead mb-4">
             💪 Každý máme určitou oblast, v níž vynikáme a v níž máme ostatním
@@ -29,7 +36,7 @@ export default function ContactPage(): ReactElement {
             tématické setkání pro ostatní.
           </p>
 
-          <p className="lead mb-4">
+          <p className="lead">
             Snažme se do fungování skupinky dát alespoň tolik, kolik si z ní
             vezmeme. Jen tak se může klub dále rozvíjet. Nebojte se být
             proaktivní a dělejte, co považujete za správné. Společně udržujeme v
@@ -119,4 +126,12 @@ export default function ContactPage(): ReactElement {
       </Container>
     </>
   );
+}
+
+export async function getStaticProps() {
+  return {
+    props: {
+      clubMembers: getAllClubMembers(),
+    },
+  };
 }

@@ -5,6 +5,7 @@ import styles from "../sections/Blog.module.scss";
 import AvatarText from "./AvatarText";
 import { OverlayTrigger, Tooltip } from "react-bootstrap";
 import { ClubMember } from "../../model/ClubMember";
+import Link from "next/link";
 
 interface Props {
   members: ClubMember[];
@@ -29,22 +30,32 @@ export default function Members({
   return (
     <div className={className}>
       {members.map((member) => (
-        <OverlayTrigger overlay={<Tooltip>Miloš</Tooltip>}>
-          <Avatar
-            profilePhoto={member.profilePhoto}
-            alt={`Člen ${member.name}`}
-            size={45}
-            className={styles.menuAvatar + " me-2 d-inline"}
-          />
+        <OverlayTrigger overlay={<Tooltip>{member.name}</Tooltip>}>
+          <Link href={"/members/" + member.slug}>
+            <Avatar
+              profilePhoto={member.profilePhoto}
+              alt={`Člen ${member.name}`}
+              size={45}
+              className={styles.menuAvatar + " me-2 d-inline"}
+            />
+          </Link>
         </OverlayTrigger>
       ))}
 
       {restMembersCount && restMembersCount > 0 && (
-        <AvatarText
-          text={`+${restMembersCount}`}
-          size={45}
-          className={styles.menuAvatar + " me-2 d-inline-block"}
-        />
+        <OverlayTrigger
+          overlay={
+            <Tooltip>{`${restMembersCount} dalších členů v klubu`}</Tooltip>
+          }
+        >
+          <Link href={"/about"}>
+            <AvatarText
+              text={`+${restMembersCount}`}
+              size={45}
+              className={styles.menuAvatar + " me-2 d-inline-block"}
+            />
+          </Link>
+        </OverlayTrigger>
       )}
     </div>
   );
