@@ -8,11 +8,13 @@ export default function TopicPill(props: { slug: string; link?: boolean }) {
     </div>
   );
 
-  return props.link ? (
-    <Link href={"/blog/topics/" + props.slug} className={"mx-1"}>
-      {content}
-    </Link>
-  ) : (
-    content
+  return (
+    <div className="d-inline mx-1">
+      {props.link ? (
+        <Link href={"/blog/topics/" + props.slug}>{content}</Link>
+      ) : (
+        content
+      )}
+    </div>
   );
 }

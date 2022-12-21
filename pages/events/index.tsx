@@ -23,7 +23,7 @@ export default function EventsPage(): ReactElement {
                 osobnostnímu růstu.
               </p>
               <p>
-                Setkání jsou otevřena pro veřejnost. Prosím pouze o registraci
+                Setkání jsou otevřena pro veřejnost. Prosíme pouze o registraci
                 na dané setkání skrze odkaz u události v kalendáři.
               </p>
             </Card.Body>
@@ -37,11 +37,11 @@ export default function EventsPage(): ReactElement {
             </Card.Header>
             <Card.Body>
               <p>
-                Každý měsíc pořádáme pro veřejnost online vysílání na určená
+                Jednou za čas pořádáme pro veřejnost online vysílání na určená
                 témata z oblasti osobnostního rozvoje.
               </p>
               <p>
-                Pro informace o aktuálně pořádaných vysíláních sledujte náš
+                Pro informace o aktuálně pořádaných vysíláních sleduj náš
                 kalendář.
               </p>
             </Card.Body>

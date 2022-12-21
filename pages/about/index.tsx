@@ -67,6 +67,14 @@ export default function ContactPage(): ReactElement {
               Jsme otevřeni ke změnám a dalšímu růstu.
             </span>
           </div>
+
+          <div className="list-group-item rounded-3 py-3">
+            Přátelství
+            <span className="d-block small opacity-50">
+              Budujeme dlouhodobé vztahy. Nepovyšujeme se jeden na druhého.
+              Tykáme si.
+            </span>
+          </div>
         </div>
       </Container>
 
