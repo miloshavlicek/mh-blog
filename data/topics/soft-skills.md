@@ -1,4 +1,4 @@
 ---
-title: "⭐ Masterclass"
-priority: 1
+title: "Soft skills"
+priority: 20
 ---
