@@ -23,7 +23,7 @@ export const humanFields = [
 
 export type Human = {
   name: string;
-  jobTitle: string;
+  jobTitle?: string;
   profilePhoto: string;
   content: string;
   linkToFacebook?: string;

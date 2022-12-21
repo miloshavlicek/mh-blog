@@ -1,6 +1,6 @@
 ---
 title: "Masterclass #2: Tajemství pozitivního myšlení"
-excerpt: "2. díl vysílání Masterclass na téma \"Tajemství pozitivního myšlení\" s hosty Veronikou Hrubou a Marošem Verbou"
+excerpt: "2. díl vysílání Masterclass na téma \"Tajemství pozitivního myšlení\" s hosty Veronikou Hrubou a Marošem Verbou."
 date: "2022-12-14 20:15:00"
 authOnly: true
 topics: ["masterclass", "mindset"]

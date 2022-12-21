@@ -54,7 +54,9 @@ export async function getStaticProps() {
       authors: getAllAuthors(),
       posts: getAllPosts(),
       topics: getAllTopics(),
-      clubMembers: getAllClubMembers(),
+      clubMembers: getAllClubMembers().sort(() =>
+        Math.random() > 0.5 ? 1 : -1
+      ),
     },
   };
 }

@@ -131,7 +131,9 @@ export default function ContactPage({
 export async function getStaticProps() {
   return {
     props: {
-      clubMembers: getAllClubMembers(),
+      clubMembers: getAllClubMembers().sort(() =>
+        Math.random() > 0.5 ? 1 : -1
+      ),
     },
   };
 }
