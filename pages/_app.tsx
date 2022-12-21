@@ -23,7 +23,7 @@ export default function MyApp({
           <meta name="description" content="Klub Žij svou vášní" />
           <link
             rel="apple-touch-icon"
-            sizes="180x180"
+            sizes="120x120"
             href="/apple-touch-icon.png"
           />
           <link
@@ -41,7 +41,7 @@ export default function MyApp({
           <link rel="manifest" href="/site.webmanifest" />
           <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
           <meta name="msapplication-TileColor" content="#da532c" />
-          <meta name="theme-color" content="#ffffff" />
+          <meta name="theme-color" content="#4B0082" />
           <title>Klub Žij svou vášní</title>
         </Head>
 
