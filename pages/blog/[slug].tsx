@@ -12,6 +12,8 @@ import { Container, Row } from "react-bootstrap";
 import AuthGuard from "../../components/guard/AuthGuard";
 import YouTubeVideo from "../../components/ui/YouTubeVideo";
 import ProfileCardHuman from "../../components/data/ProfileCardHuman";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faFilePen } from "@fortawesome/free-solid-svg-icons";
 
 export default function PostPage({
   post,
@@ -31,6 +33,17 @@ export default function PostPage({
 
   let article = (
     <>
+      {post.workbook && (
+        <a
+          href={post.workbook}
+          target="_blank"
+          className="btn btn-lg btn-outline-primary my-2"
+        >
+          <FontAwesomeIcon icon={faFilePen} className="me-2" />
+          Zobrazit pracovní list
+        </a>
+      )}
+
       {post.youTubeVideo && <YouTubeVideo slug={post.youTubeVideo} />}
 
       <div className="mt-4">{content}</div>

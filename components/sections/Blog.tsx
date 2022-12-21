@@ -15,11 +15,11 @@ import { faLock } from "@fortawesome/free-solid-svg-icons/faLock";
 import { Author } from "../../model/Author";
 import { Post } from "../../model/Post";
 import { Topic } from "../../model/Topic";
-import { faHashtag } from "@fortawesome/free-solid-svg-icons/faHashtag";
 import Avatar from "../ui/Avatar";
 import TopicPill from "../ui/TopicPill";
 import Heading from "../part/Heading";
 import { faPlayCircle } from "@fortawesome/free-regular-svg-icons/faPlayCircle";
+import { faFilePen } from "@fortawesome/free-solid-svg-icons/faFilePen";
 
 export default function BlogSection(props: {
   authors?: Author[];
@@ -70,10 +70,6 @@ export default function BlogSection(props: {
                       className={styles.navLink + " nav-link"}
                       aria-current="page"
                     >
-                      <FontAwesomeIcon
-                        icon={faHashtag}
-                        className="me-2 text-muted"
-                      />
                       {topic.title}
                     </Link>
                   </li>
@@ -127,6 +123,20 @@ export default function BlogSection(props: {
                         </div>
                       )}
 
+                      {post.workbook && (
+                        <div className={"d-inline-block me-2"}>
+                          <OverlayTrigger
+                            overlay={
+                              <Tooltip>{"Obsahuje pracovní list"}</Tooltip>
+                            }
+                          >
+                            <Link href={`/blog/${post.slug}`}>
+                              <FontAwesomeIcon icon={faFilePen} />
+                            </Link>
+                          </OverlayTrigger>
+                        </div>
+                      )}
+
                       {post.date && (
                         <OverlayTrigger
                           overlay={
@@ -160,26 +170,27 @@ export default function BlogSection(props: {
                         </OverlayTrigger>
                       )}
 
-                      {post.author && (
-                        <OverlayTrigger
-                          overlay={
-                            <Tooltip>
-                              {"Autor textu: " + post.author.name}
-                            </Tooltip>
-                          }
-                        >
-                          <div className="d-inline me-2">
-                            <Link href={"/blog/people/" + post.author.slug}>
-                              <Avatar
-                                profilePhoto={post.author.profilePhoto}
-                                alt={"Autor " + post.author.name}
-                                size={30}
-                                className={styles.menuAvatar}
-                              />
-                            </Link>
-                          </div>
-                        </OverlayTrigger>
-                      )}
+                      {post.author &&
+                        post.author.slug !== post.organizer?.slug && (
+                          <OverlayTrigger
+                            overlay={
+                              <Tooltip>
+                                {"Autor textu: " + post.author.name}
+                              </Tooltip>
+                            }
+                          >
+                            <div className="d-inline me-2">
+                              <Link href={"/blog/people/" + post.author.slug}>
+                                <Avatar
+                                  profilePhoto={post.author.profilePhoto}
+                                  alt={"Autor " + post.author.name}
+                                  size={30}
+                                  className={styles.menuAvatar}
+                                />
+                              </Link>
+                            </div>
+                          </OverlayTrigger>
+                        )}
 
                       {post.topics?.map((topic: string) => (
                         <TopicPill

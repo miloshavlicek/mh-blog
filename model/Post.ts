@@ -13,6 +13,7 @@ export const postFields = [
   "authOnly",
   "topics",
   "youTubeVideo",
+  "workbook",
   "content",
 ];
 
@@ -26,6 +27,7 @@ export type Post = {
   author?: Human;
   organizer?: Human;
   youTubeVideo?: string;
+  workbook?: string;
 } & Content;
 
 export function getPostBySlug(slug: string): Post | undefined {

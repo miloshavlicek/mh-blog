@@ -4,11 +4,12 @@ import { WithSlug } from "./interfaces";
 
 const topicsDir = join(process.cwd(), "data/topics");
 
-export const topicFields = ["slug", "title", "description"];
+export const topicFields = ["slug", "title", "description", "priority"];
 
 export type Topic = {
   title: string;
   description: string;
+  priority?: number;
 } & WithSlug;
 
 export function getTopicBySlug(slug: string): Topic | undefined {
@@ -16,5 +17,7 @@ export function getTopicBySlug(slug: string): Topic | undefined {
 }
 
 export function getAllTopics(): Topic[] {
-  return getAllEntities<Topic>(topicsDir, topicFields);
+  return getAllEntities<Topic>(topicsDir, topicFields).sort((a, b) =>
+    (a.priority ?? 99999) < (b.priority ?? 99999) ? -1 : 1
+  );
 }
