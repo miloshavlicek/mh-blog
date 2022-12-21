@@ -50,7 +50,9 @@ export default function ProfileCard(props: {
           {props.roles?.map((role) => (
             <div
               key="role"
-              className={styles.pill + " badge rounded-pill text-bg-primary"}
+              className={
+                styles.pill + " badge rounded-pill text-bg-primary mx-1"
+              }
             >
               {role}
             </div>

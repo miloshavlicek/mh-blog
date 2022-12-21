@@ -43,8 +43,6 @@ export default function PostPage({
     article = <AuthGuard>{article}</AuthGuard>;
   }
 
-  const author = post.author;
-
   return (
     <Container className="p-4">
       <Head>
@@ -76,7 +74,11 @@ export default function PostPage({
           </div>
 
           <div className="col-md-5 sticky-top">
-            {author && <ProfileCardHuman human={author} />}
+            {post.organizer && <ProfileCardHuman human={post.organizer} />}
+
+            {post.author && !post.organizer && (
+              <ProfileCardHuman human={post.author} />
+            )}
 
             <CtaNewsletter height={420} />
           </div>

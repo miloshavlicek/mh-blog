@@ -1,5 +1,6 @@
 import { WithSlug } from "./interfaces";
 import { join } from "path";
+import { getAllEntities, getEntityBySlug } from "./comment/getMarkdownEntity";
 
 export const peopleDir = join(process.cwd(), "data/people");
 
@@ -35,3 +36,11 @@ export type Human = {
   isClubMember?: boolean;
   roles?: string[];
 } & WithSlug;
+
+export function getHumanBySlug(slug: string): Human | undefined {
+  return getEntityBySlug<Human>(peopleDir, slug, humanFields, {});
+}
+
+export function getAllHumans(): Human[] {
+  return getAllEntities<Human>(peopleDir, humanFields, {});
+}

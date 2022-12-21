@@ -1,7 +1,7 @@
 import { join } from "path";
 import { getAllEntities, getEntityBySlug } from "./comment/getMarkdownEntity";
 import { Content } from "./Content";
-import { Author, getAuthorBySlug } from "./Author";
+import { getHumanBySlug, Human } from "./Human";
 
 const postsDir = join(process.cwd(), "data/posts");
 
@@ -16,11 +16,15 @@ export const postFields = [
   "content",
 ];
 
-export const postBindFields = { author: getAuthorBySlug };
+export const postBindFields = {
+  author: getHumanBySlug,
+  organizer: getHumanBySlug,
+};
 
 export type Post = {
   topics?: string[];
-  author?: Author;
+  author?: Human;
+  organizer?: Human;
   youTubeVideo?: string;
 } & Content;
 

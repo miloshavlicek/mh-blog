@@ -19,6 +19,7 @@ import { faHashtag } from "@fortawesome/free-solid-svg-icons/faHashtag";
 import Avatar from "../ui/Avatar";
 import TopicPill from "../ui/TopicPill";
 import Heading from "../part/Heading";
+import { faPlayCircle } from "@fortawesome/free-regular-svg-icons/faPlayCircle";
 
 export default function BlogSection(props: {
   authors?: Author[];
@@ -114,10 +115,57 @@ export default function BlogSection(props: {
                     <p>{post.excerpt}</p>
 
                     <div className="text-gray-400">
+                      {post.youTubeVideo && (
+                        <div className={"d-inline-block me-2"}>
+                          <OverlayTrigger
+                            overlay={<Tooltip>{"Obsahuje video"}</Tooltip>}
+                          >
+                            <Link href={`/blog/${post.slug}`}>
+                              <FontAwesomeIcon icon={faPlayCircle} />
+                            </Link>
+                          </OverlayTrigger>
+                        </div>
+                      )}
+
+                      {post.date && (
+                        <OverlayTrigger
+                          overlay={
+                            <Tooltip>{"Publikováno: " + post.date}</Tooltip>
+                          }
+                        >
+                          <time className={"me-2"}>
+                            {distanceToNow(new Date(post.date))}
+                          </time>
+                        </OverlayTrigger>
+                      )}
+
+                      {post.organizer && (
+                        <OverlayTrigger
+                          overlay={
+                            <Tooltip>
+                              {"Pořadatel: " + post.organizer.name}
+                            </Tooltip>
+                          }
+                        >
+                          <div className="d-inline me-2">
+                            <Link href={"/members/" + post.organizer.slug}>
+                              <Avatar
+                                profilePhoto={post.organizer.profilePhoto}
+                                alt={"Pořadatel " + post.organizer.name}
+                                size={30}
+                                className={styles.menuAvatar}
+                              />
+                            </Link>
+                          </div>
+                        </OverlayTrigger>
+                      )}
+
                       {post.author && (
                         <OverlayTrigger
                           overlay={
-                            <Tooltip>{"Autor: " + post.author.name}</Tooltip>
+                            <Tooltip>
+                              {"Autor textu: " + post.author.name}
+                            </Tooltip>
                           }
                         >
                           <div className="d-inline me-2">
@@ -130,18 +178,6 @@ export default function BlogSection(props: {
                               />
                             </Link>
                           </div>
-                        </OverlayTrigger>
-                      )}
-
-                      {post.date && (
-                        <OverlayTrigger
-                          overlay={
-                            <Tooltip>{"Publikováno: " + post.date}</Tooltip>
-                          }
-                        >
-                          <time className={"me-2"}>
-                            {distanceToNow(new Date(post.date))}
-                          </time>
                         </OverlayTrigger>
                       )}
 
