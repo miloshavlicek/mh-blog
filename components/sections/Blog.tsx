@@ -25,14 +25,16 @@ interface Props {
   authors?: Author[];
   posts: Post[];
   topics?: Topic[];
-  hideMenuOnMobile?: boolean;
+  hideMenu?: "sm" | "md" | "lg" | boolean;
+  limit: number;
 }
 
 export default function BlogSection({
   authors,
   posts,
   topics,
-  hideMenuOnMobile,
+  hideMenu,
+  limit,
 }: Props): ReactElement {
   return (
     <Container className="p-4 w-900">
@@ -41,15 +43,25 @@ export default function BlogSection({
       <Row>
         <div
           className={
-            "col-md-4" + (hideMenuOnMobile ? " d-none d-md-block" : "")
+            "col-md-4" +
+            (hideMenu
+              ? " d-none" +
+                (hideMenu !== true ? " d-" + hideMenu + "-block" : "")
+              : "")
           }
         >
           <BlogMenu authors={authors} topics={topics} />
         </div>
 
-        <div className="col-md-8">
+        <div
+          className={
+            hideMenu === true
+              ? "col-12"
+              : "col-" + (!hideMenu ? "md" : hideMenu) + "-8"
+          }
+        >
           {posts.length > 0 ? (
-            posts.map((post: Post) => (
+            posts.slice(0, limit).map((post: Post) => (
               <Card key={post.slug} className="m-4">
                 <Card.Body>
                   <Card.Title>
@@ -169,6 +181,16 @@ export default function BlogSection({
               <Alert variant="warning">
                 Nejsou k dispozici žádné příspěvky.
               </Alert>
+            </div>
+          )}
+
+          {posts.length > limit && (
+            <div className="text-center">
+              <Link href={"/blog"}>
+                <button className="btn btn-outline-primary">
+                  Zobrazit další příspěvky
+                </button>
+              </Link>
             </div>
           )}
         </div>
