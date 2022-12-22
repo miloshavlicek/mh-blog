@@ -2,7 +2,7 @@
 title: "Mít okolo sebe ty správné lidi - spolupráce se skupinou EnjoyTeam"
 excerpt: "Slyšel/-a jsi už, že jsme průměrem 5 lidí, s kterými trávíme nejvíce svého času? Kteří lidé to pro tebe právě
 nyní jsou? A jakými lidmi by ses nejraději obklopoval/-a v budoucnu?"
-date: "2022-12-22 17:15:00"
+date: "2022-12-22 18:45:00"
 author: "milos"
 topics: ["spoluprace"]
 ---
