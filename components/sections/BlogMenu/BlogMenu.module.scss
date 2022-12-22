@@ -1,8 +1,10 @@
+@import "../../../pages/app_variables";
+
 a.navLink {
   font-weight: bold;
 
   &:hover {
-    background-color: #4B0082;
+    background-color: $primary;
     color: #ffffff;
     text-decoration: none !important;
     font-weight: bold;

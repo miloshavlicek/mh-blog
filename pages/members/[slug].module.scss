@@ -1,10 +1,12 @@
+@import "../../pages/app_variables";
+
 .leftCol {
   position: sticky;
   top: 50px;
 }
 
 a.navLink:hover {
-  background-color: #4B0082;
+  background-color: $primary;
   color: #ffffff;
   text-decoration: none !important;
 }

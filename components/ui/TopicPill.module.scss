@@ -1,3 +1,5 @@
+@import "../../pages/app_variables";
+
 a .pill:hover {
-  background-color: #4B0082 !important;
+  background-color: $primary !important;
 }
