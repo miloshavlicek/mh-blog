@@ -26,7 +26,7 @@ interface Props {
   posts: Post[];
   topics?: Topic[];
   hideMenu?: "sm" | "md" | "lg" | boolean;
-  limit: number;
+  limit?: number;
 }
 
 export default function BlogSection({
@@ -184,7 +184,7 @@ export default function BlogSection({
             </div>
           )}
 
-          {posts.length > limit && (
+          {limit && posts.length > limit && (
             <div className="text-center">
               <Link href={"/blog"}>
                 <button className="btn btn-outline-primary">
