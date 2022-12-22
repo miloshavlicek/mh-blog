@@ -16,7 +16,6 @@ import { Author } from "../../model/Author";
 import { Post } from "../../model/Post";
 import { Topic } from "../../model/Topic";
 import Avatar from "../ui/Avatar";
-import TopicPill from "../ui/TopicPill";
 import Heading from "../part/Heading";
 import { faPlayCircle } from "@fortawesome/free-regular-svg-icons/faPlayCircle";
 import { faFilePen } from "@fortawesome/free-solid-svg-icons/faFilePen";
@@ -160,18 +159,6 @@ export default function BlogSection({
                             </div>
                           </OverlayTrigger>
                         )}
-
-                      {post.topics?.map((topic: string) => (
-                        <TopicPill
-                          slug={topic}
-                          key={topic}
-                          link={
-                            !!topics?.filter(
-                              (topicsEl) => topicsEl.slug === topic
-                            ).length
-                          }
-                        />
-                      ))}
                     </div>
                   </Card.Text>
                 </Card.Body>

@@ -14,9 +14,12 @@ import YouTubeVideo from "../../components/ui/YouTubeVideo";
 import ProfileCardHuman from "../../components/data/ProfileCardHuman";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFilePen } from "@fortawesome/free-solid-svg-icons";
+import TopicPill from "../../components/ui/TopicPill";
+import { getAllTopics } from "../../model/Topic";
 
 export default function PostPage({
   post,
+  topics,
 }: InferGetStaticPropsType<typeof getStaticProps>): ReactNode {
   const router = useRouter();
 
@@ -47,6 +50,21 @@ export default function PostPage({
       {post.youTubeVideo && <YouTubeVideo slug={post.youTubeVideo} />}
 
       <div className="mt-4">{content}</div>
+
+      {post.topics?.length && (
+        <div className="my-4">
+          <b>Související témata:</b>
+          {post.topics.map((topic: string) => (
+            <TopicPill
+              slug={topic}
+              key={topic}
+              link={
+                !!topics?.filter((topicsEl) => topicsEl.slug === topic).length
+              }
+            />
+          ))}
+        </div>
+      )}
 
       <Comment />
     </>
@@ -116,6 +134,7 @@ export async function getStaticProps({ params }: Params) {
         ...post,
         content: await markdownToHtml(post?.content ?? ""),
       },
+      topics: getAllTopics(),
     },
   };
 }
