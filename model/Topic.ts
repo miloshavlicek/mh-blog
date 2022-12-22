@@ -4,12 +4,12 @@ import { WithSlug } from "./interfaces";
 
 const topicsDir = join(process.cwd(), "data/topics");
 
-export const topicFields = ["slug", "title", "description", "priority"];
+export const topicFields = ["slug", "title", "priority", "content"];
 
 export type Topic = {
   title: string;
-  description: string;
   priority?: number;
+  content?: string;
 } & WithSlug;
 
 export function getTopicBySlug(slug: string): Topic | undefined {

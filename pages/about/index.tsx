@@ -3,46 +3,38 @@ import { Container, Row } from "react-bootstrap";
 import Divider from "../../components/part/Divider";
 import MembershipSection from "../../components/sections/Membership";
 import Heading from "../../components/part/Heading";
-import ClubMembersAvatars from "../../components/data/ClubMembersAvatars";
 import { InferGetStaticPropsType } from "next";
 import { getAllClubMembers } from "../../model/ClubMember";
+import HeadingPitch from "../../components/HeadingPitch";
+import PartnerEnjoyTeam from "../../components/PartnerEnjoyTeam";
 
 export default function ContactPage({
   clubMembers,
 }: InferGetStaticPropsType<typeof getStaticProps>): ReactElement {
   return (
     <>
-      <Container className="p-4">
-        <div className="px-4 py-5 my-5 text-center">
-          <Heading level={1}>Klub osobnostního rozvoje Žij svou vášní</Heading>
+      <Container className="px-4 pt-4">
+        <div className="px-4 py-4 my-md-5 mb-5 text-center">
+          <HeadingPitch clubMembers={clubMembers} />
 
-          <p className="lead mb-4">
-            👋 Společně utváříme klub vzájemně se podporujících lidí, kteří si
-            jdou za svými cíli a sny.
-          </p>
+          <div className="w-900">
+            <p className="lead mb-4">
+              💪 Každý máme určitou oblast, v níž vynikáme a v níž máme ostatním
+              co předat. Sdílíme společně své zkušenosti, vzájemně si pomáháme,
+              motivujeme se a inspirujeme.
+            </p>
 
-          <ClubMembersAvatars clubMembers={clubMembers} className="mb-3" />
+            <p className="lead mb-4">
+              💭 S ostatními sdílíme zajímavé výukové materiály, videa a
+              inspirativní myšlenky obecně, dělíme se o zajímavé postřehy z
+              knih, které právě čteme a každý máme možnost si připravit
+              přednášku nebo tématické setkání pro ostatní.
+            </p>
+          </div>
+        </div>
 
-          <p className="lead mb-4">
-            💪 Každý máme určitou oblast, v níž vynikáme a v níž máme ostatním
-            co předat. Sdílíme společně své zkušenosti, vzájemně si pomáháme,
-            motivujeme se a inspirujeme.
-          </p>
-
-          <p className="lead mb-4">
-            💭 S ostatními sdílíme zajímavé výukové materiály, videa a
-            inspirativní myšlenky obecně, dělíme se o zajímavé postřehy z knih,
-            které právě čteme a každý máme možnost si připravit přednášku nebo
-            tématické setkání pro ostatní.
-          </p>
-
-          <p className="lead">
-            Snažme se do fungování skupinky dát alespoň tolik, kolik si z ní
-            vezmeme. Jen tak se může klub dále rozvíjet. Nebojte se být
-            proaktivní a dělejte, co považujete za správné. Společně udržujeme v
-            klubu pozitivní atmosféru a hledáme především témata, která nás
-            spojují, než ta která nás rozdělují (např. politika).
-          </p>
+        <div className="text-end mb-3">
+          <PartnerEnjoyTeam />
         </div>
       </Container>
 
@@ -51,7 +43,17 @@ export default function ContactPage({
       <Container className="p-4">
         <Heading level={2}>Naše hodnoty</Heading>
 
-        <div className="list-group list-group-checkable d-grid gap-2 border-0 w-900">
+        <div className="px-4 py-2 my-md-5 text-center">
+          <p className="lead">
+            Snažme se do fungování skupinky dát alespoň tolik, kolik si z ní
+            vezmeme. Jen tak se může klub dále rozvíjet. Nebojme se být
+            proaktivní a dělejme, co považujete za správné. Společně udržujeme v
+            klubu pozitivní atmosféru a hledáme především témata, která nás
+            spojují, než ta která nás rozdělují (např. politika).
+          </p>
+        </div>
+
+        <div className="list-group list-group-checkable d-grid gap-2 border-0 w-900 mb-5">
           <div className="list-group-item rounded-3 py-3">
             Důvěra
             <span className="d-block small opacity-50">

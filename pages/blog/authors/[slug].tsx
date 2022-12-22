@@ -21,6 +21,7 @@ import Head from "next/head";
 import { faChevronLeft } from "@fortawesome/free-solid-svg-icons/faChevronLeft";
 import Heading from "../../../components/part/Heading";
 import ProfileCardHuman from "../../../components/data/ProfileCardHuman";
+import { faChevronRight } from "@fortawesome/free-solid-svg-icons/faChevronRight";
 
 export default function PostsAuthorPage({
   author,
@@ -40,7 +41,9 @@ export default function PostsAuthorPage({
         <title>Autor {author.name} | Žij svou vášní</title>
       </Head>
 
-      <Heading level={1}>Blog</Heading>
+      <Heading level={1}>
+        Blog <FontAwesomeIcon icon={faChevronRight} /> příspěvky autora
+      </Heading>
 
       {router.isFallback ? (
         <div>Načítání…</div>

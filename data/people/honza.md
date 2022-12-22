@@ -1,5 +1,5 @@
 ---
-name: "Jan"
+name: "Honza"
 jobTitle: "Nadšenec do vytváření aktiv, kryptoměn a osobního rozvoje"
 profilePhoto: "/img/profile/2.jpg"
 linkToFacebook: "https://www.facebook.com/profile.php?id=100077470117851"

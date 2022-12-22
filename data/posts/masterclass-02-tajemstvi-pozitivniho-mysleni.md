@@ -6,7 +6,7 @@ authOnly: true
 topics: ["masterclass", "mindset"]
 youTubeVideo: "ZglrEScPaJE"
 author: "milos"
-organizer: "jan"
+organizer: "honza"
 ---
 
 Mindset, neboli nastavení mysli je "něčím", co určuje v jakém stavu žijeme, jak se chováme a co vytváříme. Nastavení

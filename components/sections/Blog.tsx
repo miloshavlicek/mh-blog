@@ -20,68 +20,37 @@ import TopicPill from "../ui/TopicPill";
 import Heading from "../part/Heading";
 import { faPlayCircle } from "@fortawesome/free-regular-svg-icons/faPlayCircle";
 import { faFilePen } from "@fortawesome/free-solid-svg-icons/faFilePen";
+import BlogMenu from "./BlogMenu/BlogMenu";
 
-export default function BlogSection(props: {
+interface Props {
   authors?: Author[];
   posts: Post[];
   topics?: Topic[];
-}): ReactElement {
+  hideMenuOnMobile?: boolean;
+}
+
+export default function BlogSection({
+  authors,
+  posts,
+  topics,
+  hideMenuOnMobile,
+}: Props): ReactElement {
   return (
     <Container className="p-4 w-900">
       <Heading level={1}>Blog</Heading>
 
       <Row>
-        <div className="col-md-4">
-          {props.authors && (
-            <div className="mb-4">
-              <h3 className="fw-bold">Autoři</h3>
-
-              <ul className="nav nav-pills flex-column mb-auto">
-                {props.authors.map((author: Author) => (
-                  <li className="nav-item" key={author.slug}>
-                    <Link
-                      href={`/blog/authors/${author.slug}`}
-                      className={styles.navLink + " nav-link"}
-                      aria-current="page"
-                    >
-                      <Avatar
-                        profilePhoto={author.profilePhoto}
-                        alt={"Autor " + author.name}
-                        size={30}
-                        className={styles.menuAvatar + " me-2"}
-                      />
-                      {author.name}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
-
-          {props.topics && (
-            <div className="mb-4">
-              <h3 className="fw-bold">Témata</h3>
-
-              <ul className="nav nav-pills flex-column mb-auto">
-                {props.topics.map((topic: Topic) => (
-                  <li className="nav-item">
-                    <Link
-                      href={`/blog/topics/${topic.slug}`}
-                      className={styles.navLink + " nav-link"}
-                      aria-current="page"
-                    >
-                      {topic.title}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
+        <div
+          className={
+            "col-md-4" + (hideMenuOnMobile ? " d-none d-md-block" : "")
+          }
+        >
+          <BlogMenu authors={authors} topics={topics} />
         </div>
 
         <div className="col-md-8">
-          {props.posts.length > 0 ? (
-            props.posts.map((post: Post) => (
+          {posts.length > 0 ? (
+            posts.map((post: Post) => (
               <Card key={post.slug} className="m-4">
                 <Card.Body>
                   <Card.Title>
@@ -197,7 +166,7 @@ export default function BlogSection(props: {
                           slug={topic}
                           key={topic}
                           link={
-                            !!props.topics?.filter(
+                            !!topics?.filter(
                               (topicsEl) => topicsEl.slug === topic
                             ).length
                           }

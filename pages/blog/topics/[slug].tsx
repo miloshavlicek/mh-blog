@@ -20,6 +20,7 @@ import Head from "next/head";
 import { faChevronLeft } from "@fortawesome/free-solid-svg-icons/faChevronLeft";
 import { getAllTopics, getTopicBySlug } from "../../../model/Topic";
 import Heading from "../../../components/part/Heading";
+import { faChevronRight } from "@fortawesome/free-solid-svg-icons/faChevronRight";
 
 export default function PostsAuthorPage({
   topic,
@@ -39,7 +40,9 @@ export default function PostsAuthorPage({
         <title>Téma {topic.title} | Žij svou vášní</title>
       </Head>
 
-      <Heading level={1}>Blog</Heading>
+      <Heading level={1}>
+        Blog <FontAwesomeIcon icon={faChevronRight} /> příspěvky dle tématu
+      </Heading>
 
       {router.isFallback ? (
         <div>Načítání…</div>
@@ -59,11 +62,12 @@ export default function PostsAuthorPage({
               </li>
             </ul>
 
-            <div className={styles.leftCol}>
+            <div className={styles.leftCol + " mt-2"}>
               <h2 className="fw-bold">{topic.title}</h2>
-              {topic.description}
+              {topic.content}
             </div>
           </div>
+
           <div className="col-md-7">
             {posts.length > 0 ? (
               posts.map((post: Post) => (

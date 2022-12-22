@@ -6,7 +6,7 @@ authOnly: true
 topics: ["masterclass", "komunikace", "soft-skills"]
 youTubeVideo: "Ojl25m71xTM"
 author: "milos"
-organizer: "jan"
+organizer: "honza"
 ---
 
 

@@ -7,8 +7,9 @@ import { getAllAuthors } from "../model/Author";
 import { getAllPosts } from "../model/Post";
 import { InferGetStaticPropsType } from "next";
 import { getAllTopics } from "../model/Topic";
-import ClubMembersAvatars from "../components/data/ClubMembersAvatars";
 import { getAllClubMembers } from "../model/ClubMember";
+import PartnerEnjoyTeam from "../components/PartnerEnjoyTeam";
+import HeadingPitch from "../components/HeadingPitch";
 
 export default function HomePage({
   authors,
@@ -18,18 +19,9 @@ export default function HomePage({
 }: InferGetStaticPropsType<typeof getStaticProps>): ReactElement {
   return (
     <>
-      <Container className="p-4">
-        <div className="px-4 pt-4 pb-5 my-5 text-center">
-          <h1 className="display-5 fw-bold">
-            Klub osobnostního rozvoje Žij svou vášní
-          </h1>
-
-          <p className="lead mb-4">
-            👋 Společně utváříme přátelské a inspirativní prostředí vzájemně se
-            podporujících lidí, kteří si jdou za svými cíli a sny.
-          </p>
-
-          <ClubMembersAvatars clubMembers={clubMembers} className="mb-3" />
+      <Container className="px-4 pt-4">
+        <div className="px-4 py-4 mt-md-5 mb-5 text-center">
+          <HeadingPitch clubMembers={clubMembers} />
 
           <div>
             <Link href="/about">
@@ -39,11 +31,20 @@ export default function HomePage({
             </Link>
           </div>
         </div>
+
+        <div className="text-end mb-3">
+          <PartnerEnjoyTeam />
+        </div>
       </Container>
 
       <Divider />
 
-      <BlogSection authors={authors} posts={posts} topics={topics} />
+      <BlogSection
+        authors={authors}
+        posts={posts}
+        topics={topics}
+        hideMenuOnMobile
+      />
     </>
   );
 }
