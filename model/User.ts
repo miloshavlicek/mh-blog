@@ -7,7 +7,7 @@ export interface User {
 
 export async function getUser(token: string) {
   const response = await fetch(
-    `https://${process.env.NEXT_PUBLIC_AUTH0_DOMAIN}/userinfo`,
+    `${process.env.AUTH0_ISSUER_BASE_URL}/userinfo`,
     {
       headers: {
         Authorization: `Bearer ${token}`,

@@ -77,9 +77,9 @@ export default function MembershipSection() {
             </Card.Body>
 
             <Card.Footer className={"bg-white border-white"}>
-              <Button className="w-100 btn btn-lg btn-primary">
+              <Link className="w-100 btn btn-lg btn-primary" href="/profile">
                 Přihlásit se
-              </Button>
+              </Link>
 
               <div className="mt-2">
                 <i>Zůstaň s námi v kontaktu i po skončení akce…</i>

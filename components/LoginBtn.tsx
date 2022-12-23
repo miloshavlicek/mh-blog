@@ -1,38 +1,51 @@
-import { useAuth0 } from "@auth0/auth0-react";
 import { ReactElement } from "react";
+import { useUser } from "@auth0/nextjs-auth0/client";
+import Link from "next/link";
 
 export default function LoginBtn(props: {
   signOutClass?: string;
   signInClass?: string;
+  className?: string;
+  logInOnly?: boolean;
 }): ReactElement {
-  const { isAuthenticated, logout, loginWithPopup } = useAuth0();
+  const { user, error, isLoading } = useUser();
 
-  return (
-    <>
-      {isAuthenticated ? (
-        <button
-          className={
-            "btn" +
-            (props.signOutClass
-              ? " " + props.signOutClass
-              : " btn-outline-dark")
-          }
-          onClick={() => logout({ returnTo: window.location.origin })}
-        >
-          Odhlásit se
-        </button>
-      ) : (
-        <button
-          type="button"
-          className={
-            "btn" +
-            (props.signInClass ? " " + props.signInClass : " btn-primary")
-          }
-          onClick={async () => await loginWithPopup()}
-        >
-          Přihlásit se
-        </button>
-      )}
-    </>
+  if (isLoading) return <></>;
+  if (error) return <></>;
+
+  const logInComponent = (
+    <Link
+      className={
+        "btn" +
+        (props.signInClass ? " " + props.signInClass : " btn-primary") +
+        (props.className ? " " + props.className : "")
+      }
+      href="/api/auth/login"
+    >
+      Přihlásit se
+    </Link>
+  );
+
+  const logOutComponent = (
+    <Link
+      className={
+        "btn" +
+        (props.signOutClass ? " " + props.signOutClass : " btn-outline-dark") +
+        (props.className ? " " + props.className : "")
+      }
+      href="/api/auth/logout"
+    >
+      Odhlásit se
+    </Link>
+  );
+
+  return user ? (
+    props.logInOnly === true ? (
+      <></>
+    ) : (
+      logOutComponent
+    )
+  ) : (
+    logInComponent
   );
 }

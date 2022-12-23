@@ -1,0 +1,10 @@
+@import "../../pages/app_variables";
+
+.deleteButton {
+  background: transparent;
+  border: 0;
+
+  &:hover {
+    color: $danger;
+  }
+}

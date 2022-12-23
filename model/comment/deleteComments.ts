@@ -1,8 +1,9 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import clearUrl from "../../lib/utils/clearUrl";
 import redis from "../../lib/utils/redis";
-import { getUser, User } from "../User";
 import { Comment } from "./Comment";
+import { getAccessToken } from "@auth0/nextjs-auth0";
+import { getUser } from "../User";
 
 export default async function deleteComments(
   req: NextApiRequest,
@@ -10,9 +11,9 @@ export default async function deleteComments(
 ) {
   const url = req.headers.referer ? clearUrl(req.headers.referer) : "";
   const { comment }: { url: string; comment: Comment } = req.body;
-  const { authorization } = req.headers;
+  const accessToken = await getAccessToken(req, res);
 
-  if (!comment || !authorization) {
+  if (!comment) {
     return res.status(400).json({ message: "Missing parameter." });
   }
 
@@ -21,10 +22,12 @@ export default async function deleteComments(
   }
 
   try {
-    // verify user token
-    const user: User = await getUser(authorization);
-    if (!user) return res.status(400).json({ message: "Invalid token." });
-    comment.user.email = user.email;
+    if (!accessToken.accessToken)
+      return res.status(400).json({ message: "Invalid token." });
+
+    const user = await getUser(accessToken.accessToken);
+
+    comment.user.email = user.email ?? undefined;
 
     const isAdmin = process.env.NEXT_PUBLIC_AUTH0_ADMIN_EMAIL === user.email;
     const isAuthor = user.sub === comment.user.sub;
@@ -37,7 +40,7 @@ export default async function deleteComments(
     await redis.lrem(url, 0, JSON.stringify(comment));
 
     return res.status(200).end();
-  } catch (err) {
+  } catch (e) {
     return res.status(400);
   }
 }

@@ -1,17 +1,18 @@
 import styles from "./AuthGuard.module.scss";
-import { useAuth0 } from "@auth0/auth0-react";
 import { ReactElement, ReactNode } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLock } from "@fortawesome/free-solid-svg-icons/faLock";
+import { useUser } from "@auth0/nextjs-auth0/client";
+import Link from "next/link";
 
 interface Props {
   children: ReactNode;
 }
 
 export default function AuthGuard({ children }: Props): ReactElement {
-  const { isAuthenticated, loginWithPopup } = useAuth0();
+  const { user } = useUser();
 
-  if (!isAuthenticated) {
+  if (!user) {
     return (
       <div className={styles.box}>
         <div className="display-6 text-primary">
@@ -19,13 +20,9 @@ export default function AuthGuard({ children }: Props): ReactElement {
           dispozici pouze pro přihlášené uživatele.
         </div>
 
-        <button
-          type="button"
-          className="btn btn-primary btn-lg mt-5"
-          onClick={async () => await loginWithPopup()}
-        >
+        <Link className="btn btn-primary btn-lg mt-5" href="/api/auth/login">
           Přihlásit se
-        </button>
+        </Link>
       </div>
     );
   }

@@ -3,6 +3,7 @@ import redis from "../../lib/utils/redis";
 import { nanoid } from "nanoid";
 import clearUrl from "../../lib/utils/clearUrl";
 import { Comment } from "./Comment";
+import { getAccessToken } from "@auth0/nextjs-auth0";
 import { getUser } from "../User";
 
 export default async function createComments(
@@ -11,22 +12,23 @@ export default async function createComments(
 ): Promise<void> {
   const url = req.headers.referer ? clearUrl(req.headers.referer) : "";
   const { text } = req.body;
-  const { authorization } = req.headers;
+  const accessToken = await getAccessToken(req, res);
 
-  if (!text || !authorization) {
+  if (!text) {
     return res.status(400).json({ message: "Missing parameter." });
   }
 
-  if (redis == null) {
+  if (redis === null) {
     return res
       .status(400)
       .json({ message: "Failed to connect to redis client." });
   }
 
   try {
-    // verify user token
-    const user = await getUser(authorization);
-    if (!user) return res.status(400).json({ message: "Need authorization." });
+    if (!accessToken.accessToken)
+      return res.status(400).json({ message: "Need authorization." });
+
+    const user = await getUser(accessToken.accessToken);
 
     const { name, picture, sub, email } = user;
 
@@ -35,14 +37,19 @@ export default async function createComments(
       created_at: Date.now(),
       url,
       text,
-      user: { name, picture, sub, email },
+      user: {
+        name: name ?? "",
+        picture: picture ?? "",
+        sub: sub ?? "",
+        email: email ?? "",
+      },
     };
 
     // write data
     await redis.lpush(url, JSON.stringify(comment));
 
     return res.status(200).json(comment);
-  } catch (_) {
+  } catch (e: any) {
     return res.status(400).json({ message: "Unexpected error occurred." });
   }
 }
