@@ -87,7 +87,7 @@ export default function BlogSection({
                       {post.title}
                     </Link>
                   </Card.Title>
-                  <Card.Text>
+                  <Card.Body className="p-0">
                     <p>{post.excerpt}</p>
 
                     <div className="text-gray-400">
@@ -172,7 +172,7 @@ export default function BlogSection({
                           </OverlayTrigger>
                         )}
                     </div>
-                  </Card.Text>
+                  </Card.Body>
                 </Card.Body>
               </Card>
             ))

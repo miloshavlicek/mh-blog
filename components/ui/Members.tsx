@@ -30,7 +30,10 @@ export default function Members({
   return (
     <div className={className}>
       {members.map((member) => (
-        <OverlayTrigger overlay={<Tooltip>{member.name}</Tooltip>}>
+        <OverlayTrigger
+          key={member.slug}
+          overlay={<Tooltip>{member.name}</Tooltip>}
+        >
           <Link href={"/members/" + member.slug}>
             <Avatar
               profilePhoto={member.profilePhoto}

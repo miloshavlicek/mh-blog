@@ -14,7 +14,7 @@ export default function BlogMenuTopics({ topics }: Props): ReactElement {
 
       <ul className="nav nav-pills flex-column mb-auto">
         {topics.map((topic: Topic) => (
-          <li className="nav-item">
+          <li key={topic.slug} className="nav-item">
             <Link
               href={`/blog/topics/${topic.slug}`}
               className={styles.navLink + " nav-link"}

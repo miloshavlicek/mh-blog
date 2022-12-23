@@ -1,6 +1,5 @@
 import { menuDefinition } from "../menuDefinition";
 import { ReactElement } from "react";
-import Link from "next/link";
 import { Container } from "react-bootstrap";
 
 export default function Footer(): ReactElement {
@@ -27,13 +26,24 @@ export default function Footer(): ReactElement {
 
         <p className="text-center text-muted">
           © 2022{" "}
-          <Link
-            href="/"
+          <a
+            href="https://cothema.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-muted"
             aria-label="Přejít na úvodní stranu"
-            className="hover:underline"
           >
-            Miloš Havlíček
-          </Link>
+            Cothema s.r.o.
+          </a>
+          <span className="mx-2">•</span>
+          <a
+            href="https://cothema.com/cz/obchodni-podminky"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-muted"
+          >
+            Obchodní podmínky a ochrana soukromí
+          </a>
         </p>
       </footer>
     </Container>
