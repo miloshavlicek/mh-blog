@@ -160,7 +160,7 @@ export default function BlogSection({
                             }
                           >
                             <div className="d-inline me-2">
-                              <Link href={"/blog/people/" + post.author.slug}>
+                              <Link href={"/blog/authors/" + post.author.slug}>
                                 <Avatar
                                   profilePhoto={post.author.profilePhoto}
                                   alt={"Autor " + post.author.name}
